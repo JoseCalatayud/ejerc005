@@ -4,7 +4,7 @@ Este proyecto contiene un ejemplo de aplicación con Spring Boot y Maven.
 
 ## Requisitos
 
-- Java 17+
+- Java 21
 - Maven 3.8+
 - Spring Boot 3.4.2
 
