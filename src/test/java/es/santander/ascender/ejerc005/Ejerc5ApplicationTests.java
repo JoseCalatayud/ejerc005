@@ -1,4 +1,4 @@
-package es.santander.ascender.ejerc5;
+package es.santander.ascender.ejerc005;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

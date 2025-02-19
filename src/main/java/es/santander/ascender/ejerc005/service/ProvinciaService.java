@@ -4,19 +4,22 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import es.santander.ascender.ejerc005.model.Provincia;
 import es.santander.ascender.ejerc005.repository.ProvinciaRepository;
 
 @Service
+@Transactional
 public class ProvinciaService {
     @Autowired
     ProvinciaRepository pr;
-
+    
+    @Transactional(readOnly = true)
     public List<Provincia> read() {
         return pr.findAll();
     }
-
+    @Transactional (readOnly = true)
     public Provincia read(Long id) {
         return pr.findById(id).get();
     }

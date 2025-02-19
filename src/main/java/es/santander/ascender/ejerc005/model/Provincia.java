@@ -17,8 +17,7 @@ public class Provincia {
     public Provincia() {
     }
 
-    public Provincia(Long id, @NotBlank String nombre) {
-        this.id = id;
+    public Provincia(@NotBlank String nombre) {
         this.nombre = nombre;
     }
 

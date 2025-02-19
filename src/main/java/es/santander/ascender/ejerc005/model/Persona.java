@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 @Entity
 public class Persona {
@@ -18,16 +19,17 @@ public class Persona {
     private String apellidos;
     @Positive
     private int edad;
-    @NotBlank
+    @NotNull
     private Long provincia_Id;
 
     public Persona() {
     }
 
-    public Persona(Long id, @NotBlank String nombre, @NotBlank String apellidos, Long provincia_Id) {
-        this.id = id;
+    public Persona(String nombre, String apellidos, int edad, Long provincia_Id) {
+        
         this.nombre = nombre;
         this.apellidos = apellidos;
+        this.edad = edad;
         this.provincia_Id = provincia_Id;
     }
 

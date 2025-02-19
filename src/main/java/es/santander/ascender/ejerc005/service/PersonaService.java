@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import es.santander.ascender.ejerc005.model.Persona;
 import es.santander.ascender.ejerc005.repository.PersonaRepository;
 
 @Service
+@Transactional
 public class PersonaService {
     @Autowired
     PersonaRepository pr;
@@ -30,10 +32,7 @@ public class PersonaService {
     }
 
     public Persona update(Persona p) {
-        if (p.getId() == null) {
-            throw new CrudSecurityException("Has tratado de modificar un registro con el metodo crear",
-                    CRUDOperation.UPDATE, null);
-        }
+        
         return pr.save(p);
     }
 
