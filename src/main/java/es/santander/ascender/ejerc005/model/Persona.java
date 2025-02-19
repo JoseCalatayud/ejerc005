@@ -19,16 +19,16 @@ public class Persona {
     @Positive
     private int edad;
     @NotBlank
-    private String provincia;
+    private Long provincia_Id;
 
     public Persona() {
     }
 
-    public Persona(Long id, @NotBlank String nombre, @NotBlank String apellidos, String provincia) {
+    public Persona(Long id, @NotBlank String nombre, @NotBlank String apellidos, Long provincia_Id) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.provincia = provincia;
+        this.provincia_Id = provincia_Id;
     }
 
     public Long getId() {
@@ -63,11 +63,11 @@ public class Persona {
         this.edad = edad;
     }
 
-    public String getProvincia() {
-        return provincia;
+    public Long getProvincia() {
+        return provincia_Id;
     }
 
-    public void setProvincia(String provincia) {
-        this.provincia = provincia;
+    public void setProvincia(Long provincia_Id) {
+        this.provincia_Id = provincia_Id;
     }
 }
