@@ -12,32 +12,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.santander.ascender.ejerc005.model.Persona;
-import es.santander.ascender.ejerc005.service.PersonaService;
+import es.santander.ascender.ejerc005.model.Pais;
+import es.santander.ascender.ejerc005.service.PaisService;
+
 
 @RestController
-@RequestMapping("/api/persona")
-public class PersonaController {
+@RequestMapping("/api/pais")
+public class PaisController {
     @Autowired
-    PersonaService ps;
+    PaisService ps;
+
     @GetMapping
-    public List<Persona> read() {
+    public List<Pais> readAll() {
         return ps.readAll();
     }
+
     @GetMapping("/{id}")
-    public Persona read(@PathVariable Long id) {
+    public Pais read(@PathVariable Long id) {
         return ps.read(id);
     }
+
     @PostMapping
-    public Persona create(@RequestBody Persona p) {
+    public Pais create(@RequestBody Pais p) {
         return ps.create(p);
     }
+
     @PutMapping
-    public void update(@RequestBody Persona p) {
-        ps.update(p);
+    public Pais update(@RequestBody Pais p) {
+        return ps.update(p);
     }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         ps.delete(id);
     }
+
 }

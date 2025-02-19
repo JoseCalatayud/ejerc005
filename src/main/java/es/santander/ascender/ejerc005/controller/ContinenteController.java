@@ -12,32 +12,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.santander.ascender.ejerc005.model.Persona;
-import es.santander.ascender.ejerc005.service.PersonaService;
+import es.santander.ascender.ejerc005.model.Continente;
+import es.santander.ascender.ejerc005.service.ContinenteService;
 
 @RestController
-@RequestMapping("/api/persona")
-public class PersonaController {
+@RequestMapping("/api/continente")
+public class ContinenteController {
     @Autowired
-    PersonaService ps;
+    ContinenteService cs;
+
     @GetMapping
-    public List<Persona> read() {
-        return ps.readAll();
+    public List<Continente> readAll() {
+        return cs.readAll();
     }
+
     @GetMapping("/{id}")
-    public Persona read(@PathVariable Long id) {
-        return ps.read(id);
+    public Continente read(@PathVariable Long id) {
+        return cs.read(id);
     }
     @PostMapping
-    public Persona create(@RequestBody Persona p) {
-        return ps.create(p);
+    public Continente create(@RequestBody Continente c) {
+        return cs.create(c);
     }
     @PutMapping
-    public void update(@RequestBody Persona p) {
-        ps.update(p);
+    public Continente update(@RequestBody Continente c) {
+        return cs.update(c);
     }
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        ps.delete(id);
+        cs.delete(id);
     }
+
 }

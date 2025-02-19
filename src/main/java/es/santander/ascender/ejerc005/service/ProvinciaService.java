@@ -16,7 +16,7 @@ public class ProvinciaService {
     ProvinciaRepository pr;
     
     @Transactional(readOnly = true)
-    public List<Provincia> read() {
+    public List<Provincia> readAll() {
         return pr.findAll();
     }
     @Transactional (readOnly = true)

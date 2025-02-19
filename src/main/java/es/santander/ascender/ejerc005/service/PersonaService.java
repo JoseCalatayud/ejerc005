@@ -15,7 +15,7 @@ public class PersonaService {
     @Autowired
     PersonaRepository pr;
 
-    public List<Persona> read() {
+    public List<Persona> readAll() {
         return pr.findAll();
     }
 

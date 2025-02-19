@@ -23,7 +23,7 @@ public class ProvinciaController {
 
     @GetMapping
     public List<Provincia> read() {
-        return ps.read();
+        return ps.readAll();
     }
 
     @GetMapping("/{id}")
