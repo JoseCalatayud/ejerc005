@@ -26,11 +26,19 @@ public class PaisService {
         return pr.findById(id).get();
     }
 
-    public Pais create(Pais p) {        
+    public Pais create(Pais p) {
+        if(p.getId()!= null ){
+            throw new CrudSecurityException("Han tratado de crear un registro usando el metodo modificar",
+            CRUDOperation.CREATE, p.getId());
+        }  
         return pr.save(p);
     }
 
-    public Pais update(Pais p) {        
+    public Pais update(Pais p) {
+        if(p.getId()== null ){
+            throw new CrudSecurityException("Han tratado de modificar un registro usando el metodo crear",
+            CRUDOperation.CREATE, p.getId());
+        }  
         return pr.save(p);
     }
 

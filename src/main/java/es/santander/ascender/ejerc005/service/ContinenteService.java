@@ -27,11 +27,19 @@ public class ContinenteService {
         return cr.findById(id).get();
     }
 
-    public Continente create(Continente p) {        
+    public Continente create(Continente p) { 
+        if(p.getId()!= null ){
+            throw new CrudSecurityException("Han tratado de crear un registro usando el metodo modificar",
+            CRUDOperation.CREATE, p.getId());
+        }       
         return cr.save(p);
     }
 
-    public Continente update(Continente p) {        
+    public Continente update(Continente p) {    
+        if(p.getId()!= null ){
+            throw new CrudSecurityException("Han tratado de modificar un registro usando el metodo crear",
+            CRUDOperation.CREATE, p.getId());
+        }    
         return cr.save(p);
     }
 
