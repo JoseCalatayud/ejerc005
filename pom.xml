@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>es.santander.ascender</groupId>
-	<artifactId>ejerc5</artifactId>
+	<artifactId>ejerc005</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ejerc5</name>
 	<description>Proyecto Persona-Provincia</description>

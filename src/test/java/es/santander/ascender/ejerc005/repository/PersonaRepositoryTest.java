@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,46 +14,67 @@ import es.santander.ascender.ejerc005.model.Persona;
 
 @SpringBootTest
 public class PersonaRepositoryTest {
-    Persona persona1;
-    Persona persona2;
-    Persona persona3;
-
+    
+    
+    Persona persona1 = new Persona("Andres", "Perez", 44, 15l);
+    Persona persona2 = new Persona("Jose", "Perez", 34, 17l);
+    Persona persona3 = new Persona("Gonzalo", "Perez", 27, 39l);
+    Persona persona4 = new Persona("Fernando", "Gonzalez", 67, 39l);
+    
+    
     @Autowired
     PersonaRepository pr;
 
+
     @BeforeEach
     void setUp() {
-        persona1 = new Persona("Andres", "Perez", 44, 15l); 
-        persona2 = new Persona("Jose", "Perez", 34, 17l); 
-        persona3 = new Persona("Gonzalo", "Perez", 27, 39l); 
         pr.save(persona1);
         pr.save(persona2);
         pr.save(persona3);
-    }
-    
-    @Test
-    void creadByIdTest() {
-        Persona persona1 = pr.findById(1l).orElseGet(null);
-        assertTrue ("Andres".equals(persona1.getNombre()));        
-        assertFalse(pr.findAll().isEmpty());
+
     }
 
-    @Test 
-    void readAllTest() {
-        List<Persona> personas = pr.findAll();
-        assertTrue(personas.size()==3);
+    @Test
+    void crearTest() {
+        assertTrue(pr.findAll().size() == 3);
+        pr.save(persona4);
+        assertTrue(pr.findAll().size() == 4);
+        persona4 = pr.findById(persona4.getId()).get();
+        assertTrue("Fernando".equals(persona4.getNombre()));
+        pr.deleteById(persona4.getId());
         
     }
 
     @Test
-    void delete(){
-        pr.deleteById(1l);
-        assertTrue(pr.findAll().size()==2);
-        assertFalse(pr.findById(1l).isPresent());
+    void readAllTest() {
+        
+        List<Persona> personas = pr.findAll();
+        assertTrue(personas.size() == 3);
+
     }
 
-    
+    @Test
+    void readById() {
+        
+        Persona persona = pr.findById(1l).get();
+        assertTrue("Andres".equals(persona.getNombre()));
+    }
 
-    
+    @Test
+    void delete() {
+        
+        pr.deleteById(persona2.getId());
+        
+        assertFalse(pr.findById(persona2.getId()).isPresent());
+    }
+
+    @Test
+    void update() {
+        
+        Persona persona4 = pr.findById(1l).orElseGet(null);
+        persona4.setNombre("Andresito");
+        pr.save(persona4);
+        assertTrue("Andresito".equals(pr.findById(1l).orElseGet(null).getNombre()));
+    }
 
 }
