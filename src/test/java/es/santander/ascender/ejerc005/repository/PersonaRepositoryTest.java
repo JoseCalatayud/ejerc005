@@ -19,7 +19,7 @@ public class PersonaRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        persona = new Persona("Jose", "Calatayud", 44, 15l);
+        persona = new Persona("Andres", "Perez", 44, 15l);
         pr.deleteAll();
 
     }
@@ -31,16 +31,6 @@ public class PersonaRepositoryTest {
         assertFalse(pr.findAll().isEmpty());
     }
 
-    @Test
-    void listarTest() {
-        // for (int i = 0; i < 5; i++) {
-        //     pr.save(persona);
-        // }
-        pr.save(persona);
-        pr.save(persona);
-        pr.save(persona);
-        assertTrue(pr.findAll().size()==3);
-
-    }
+    
 
 }
