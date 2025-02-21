@@ -24,7 +24,7 @@ public class ContinenteService {
 
     @Transactional (readOnly = true)
     public Continente read(Long id) {
-        return cr.findById(id).get();
+        return cr.findById(id).orElseGet(null);
     }
 
     public Continente create(Continente p) { 

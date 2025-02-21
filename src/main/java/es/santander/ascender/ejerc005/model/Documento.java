@@ -2,8 +2,8 @@ package es.santander.ascender.ejerc005.model;
 
 import java.time.LocalDate;
 
-import io.micrometer.common.lang.NonNull;
-import jakarta.persistence.Column;
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,35 +15,35 @@ public class Documento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(length = 256)
-    @NonNull
-    @NotBlank    
+
+    @Length(max = 256)
+    @NotBlank
     private String nombre;
-    @Column(length = 15)
+
+    @Length(max = 15)
     private String extension;
-    @NonNull
+
     @NotBlank
     private Long personaId;
-    @NonNull
+
     @NotBlank
-    private LocalDate fechaCreacion;//solo fecha
-    
+    private LocalDate fechaCreacion; // solo fecha
+
     @NotBlank
     private boolean borrado;
 
     public Documento() {
     }
-    
 
-    public Documento(@NotBlank String nombre, String extension, @NotBlank Long personaId,
-            @NotBlank LocalDate fechaCreacion, @NotBlank boolean borrado) {
+    public Documento(String nombre, String extension, Long personaId,
+            LocalDate fechaCreacion, boolean borrado) {
+        this.id = null;
         this.nombre = nombre;
         this.extension = extension;
         this.personaId = personaId;
         this.fechaCreacion = fechaCreacion;
         this.borrado = borrado;
     }
-
 
     public String getNombre() {
         return nombre;
@@ -85,15 +85,12 @@ public class Documento {
         this.borrado = borrado;
     }
 
-
     public Long getId() {
         return id;
     }
 
-
     public void setId(Long id) {
         this.id = id;
     }
-    
 
 }
